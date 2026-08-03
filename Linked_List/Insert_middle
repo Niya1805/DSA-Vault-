@@ -1,1 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+};
+struct node * add_at_pos(struct node* head,int data,int pos)
+{
+	struct node* p = head;
+	struct node *newnode = (struct node*)malloc(sizeof(struct node));
+	newnode->data=data;
+	newnode->next=NULL;
+	pos--;
+	while(pos!=1)
+	{
+		p=p->next;
+		pos--;
+	}
+	newnode->next=p->next;
+	p->next=newnode;
+	head = newnode;
+	
+}
+int main()
+{
+	struct node* head = (struct node*)malloc(sizeof(struct node));
+	head->data = 45;
+	head->next=NULL;
+	struct node* second = (struct node*)malloc(sizeof(struct node));
+	
+	second->data= 98;
+	second->next=NULL;
+	
+	head->next=second;
+	int data=67;
+	int pos = 2;
+	add_at_pos(head,data,pos);
+	struct node *temp=head;
+	
+	while(temp!=NULL)
+	{
+		printf(" %d",temp->data);
+		temp = temp->next;
+	}
+	return 0;
+}
 
