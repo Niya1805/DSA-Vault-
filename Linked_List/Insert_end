@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+struct node * add_end(struct node *head,int data)
+{
+	struct node *p=head;
+	struct node *newnode=(struct node*)malloc(sizeof(struct node));
+	newnode->data=data;
+	newnode->next=NULL;
+	while(p->next!=NULL) //temp link will keep updating as it moves
+	{
+		p=p->next;
+	}
+	p->next=newnode;
+	head=newnode;
+	return head;	
+}
+int main()
+{
+	struct node* head = (struct node*)malloc(sizeof(struct node));
+	head->data = 45;
+	head->next=NULL;
+	struct node* second = (struct node*)malloc(sizeof(struct node));
+	
+	second->data= 98;
+	second->next=NULL;
+	
+	head->next=second;
+	int value=3;
+	add_end(head,value);
+	struct node *temp = head;
+	
+	while(temp!=NULL)
+	{
+		printf(" %d",temp->data);
+		temp = temp->next;
+	}
+	return 0;
+}
