@@ -1,31 +1,31 @@
 #include <stdio.h>
 
 int main() {
+int i,arr[100];
     printf("Enter number of elements");
-    int arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
-    int n = sizeof(arr) / sizeof(arr[0]); // Calculates the number of elements
-    int target = 23;                       // The element we want to find
+    scanf("%d",&n);
+    printf("Enter those elements");
+    for(i=0;i<n;i++){
+    scanf("%d",&arr[i]);}
     
     int low = 0;
     int high = n - 1;
     int mid;
-    int found_index = -1; // Stores the index if found, remains -1 if not found
+    int found_index = -1; 
 
-    // 2. Binary Search Logic
     while (low <= high) {
-        // Calculate the middle index (prevents potential integer overflow)
+        
         mid = low + (high - low) / 2;
 
-        // Check if the target is present at mid
         if (arr[mid] == target) {
             found_index = mid;
-            break; // Element found, exit the loop
+            break; 
         }
-        // If target is greater, ignore the left half
+        
         else if (arr[mid] < target) {
             low = mid + 1;
         }
-        // If target is smaller, ignore the right half
+        
         else {
             high = mid - 1;
         }
